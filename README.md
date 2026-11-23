@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Práctica de Jest y testing en React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositorio reúne ejercicios de práctica de un curso de testing con JavaScript y React. El foco del código versionado está en aprender a escribir pruebas unitarias con Jest para funciones y estructuras de datos, además de probar operaciones asíncronas. También incluye el punto de partida de una aplicación React.
 
-## Available Scripts
+## Stack y herramientas
 
-In the project directory, you can run:
+- **JavaScript (ES modules):** implementación de las funciones y módulos de práctica.
+- **React 18 y React DOM:** base de la pequeña aplicación web.
+- **Create React App (`react-scripts` 5):** configuración de desarrollo, build y ejecución de Jest sin configuración manual.
+- **Jest:** framework de pruebas, integrado con el comando `react-scripts test`; se usan `describe`, `test` y distintos matchers de `expect`.
+- **Enzyme 3 y `enzyme-adapter-react-16`:** aparecen como dependencias de desarrollo para el trabajo con componentes. Los ejercicios actuales no importan ni configuran Enzyme, y el adaptador declarado es para React 16, mientras que el proyecto usa React 18.
+- **React Testing Library y `user-event`:** también están declaradas como dependencias, aunque los tests actuales no las utilizan.
 
-### `npm start`
+El manifiesto incluye otras bibliotecas (por ejemplo, Axios, React Router, Styled Components, Chart.js y PubSubJS) que no forman parte de la aplicación de ejemplo ni de los ejercicios de testing presentes. Por eso se listan como dependencias disponibles, no como funcionalidades implementadas en este repositorio.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ¿Qué se practica?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Estructura de pruebas:** agrupar casos con `describe` y definirlos con `test`.
+- **Aserciones y matchers de Jest:** igualdad estricta y estructural (`toBe`, `toEqual`, `toStrictEqual`), negación, coincidencia de texto y expresiones regulares, contenido y longitud de arrays, propiedades de objetos, y valores definidos, nulos, booleanos y `NaN`.
+- **Pruebas de funciones sincrónicas:** operaciones aritméticas y generación de números aleatorios; funciones de saludo, despedida e identificadores; y ejemplos de manejo de arrays y objetos.
+- **Estado encapsulado y estructuras de datos:** pequeños almacenes creados mediante closures para agregar y recuperar frutas o elementos, incluida la búsqueda de un elemento por identificador.
+- **Pruebas asíncronas:** esperar callbacks con `done`, encadenar promesas, comprobar promesas con `.resolves` y `.rejects`, y usar `async`/`await`.
+- **Solicitud HTTP asíncrona:** consultar un usuario de JSONPlaceholder y comprobar que la respuesta contenga propiedades esperadas.
+- **React:** la aplicación de muestra renderiza un encabezado introductorio. El repositorio no presenta una interfaz funcional extensa; los ejercicios se concentran en los fundamentos de testing.
 
-### `npm test`
+## Estructura del repositorio
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+src/
+├── App.js                    # Componente React de ejemplo
+├── index.js                  # Punto de entrada de la aplicación
+├── __test__/
+│   └── App.test.js           # Pruebas de ejemplo con Jest
+└── utils/
+    ├── arrays.js             # Almacén de frutas
+    ├── async.js              # Callbacks, promesas y consulta HTTP
+    ├── numbers.js            # Operaciones numéricas
+    ├── objects.js            # Almacén de objetos y búsqueda por ID
+    ├── strings.js            # Funciones de texto
+    └── __test__/             # Pruebas de los módulos de utilidades
+```
 
-### `npm run build`
+Los tests de utilidades están junto a `src/utils/__test__`, organizados en archivos por tema: arrays, asincronía, números, objetos, valores primitivos y strings.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js y npm.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalación y uso
 
-### `npm run eject`
+Desde la raíz del proyecto:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La aplicación de desarrollo queda disponible en [http://localhost:3000](http://localhost:3000).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para ejecutar los tests:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm test
+```
 
-## Learn More
+Create React App inicia Jest en modo interactivo (watch). Para generar una compilación optimizada:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Scripts disponibles
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Comando | Descripción |
+| --- | --- |
+| `npm start` | Inicia el servidor de desarrollo. |
+| `npm test` | Ejecuta Jest mediante Create React App, en modo watch. |
+| `npm run build` | Genera la compilación de producción en `build/`. |
+| `npm run eject` | Expone la configuración interna de Create React App; es una operación irreversible y no es necesaria para ejecutar estos ejercicios. |
